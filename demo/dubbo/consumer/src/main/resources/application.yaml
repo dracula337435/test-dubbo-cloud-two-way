@@ -1,0 +1,5 @@
+dubbo:
+  application:
+    name: demo-dubbo-consumer
+  registry:
+    address: tsfconsul://localhost:8500
