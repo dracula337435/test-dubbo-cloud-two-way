@@ -1,4 +1,4 @@
-package io.dracula.test.dubbo.cloud.two.way.demo.dubbo.provider;
+package io.dracula.test.dubbo.cloud.two.way.demo.dubbo.api;
 
 /**
  * @author dk

@@ -1,5 +1,7 @@
 package io.dracula.test.dubbo.cloud.two.way.demo.dubbo.provider;
 
+import io.dracula.test.dubbo.cloud.two.way.demo.dubbo.api.EchoService;
+import io.dracula.test.dubbo.cloud.two.way.demo.dubbo.api.SomeMsg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

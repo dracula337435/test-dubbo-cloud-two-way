@@ -1,7 +1,7 @@
 package io.dracula.test.dubbo.cloud.two.way.demo.dubbo.provider.test;
 
-import io.dracula.test.dubbo.cloud.two.way.demo.dubbo.provider.EchoService;
-import io.dracula.test.dubbo.cloud.two.way.demo.dubbo.provider.SomeMsg;
+import io.dracula.test.dubbo.cloud.two.way.demo.dubbo.api.EchoService;
+import io.dracula.test.dubbo.cloud.two.way.demo.dubbo.api.SomeMsg;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.annotation.Reference;
