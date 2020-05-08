@@ -40,4 +40,25 @@ public class ClientController {
         return echoMsg;
     }
 
+    @Autowired
+    private EchoDubbo echoDubbo;
+
+    @GetMapping("echoFeignDubbo")
+    public EchoCloud.MsgInClient echoFeignDubbo(@RequestParam(name="msg", defaultValue="hello") String msg){
+        EchoCloud.MsgInClient msgInClient = new EchoCloud.MsgInClient();
+        msgInClient.setMsg(msg);
+        EchoCloud.MsgInClient echoMsg = echoDubbo.echo(msgInClient);
+        logger.info("echoFeignDubbo将要返回："+echoMsg.getMsg());
+        return echoMsg;
+    }
+
+    @GetMapping("echoTemplateDubbo")
+    public EchoCloud.MsgInClient echoTemplateDubbo(@RequestParam(name="msg", defaultValue="hello") String msg){
+        EchoCloud.MsgInClient msgInClient = new EchoCloud.MsgInClient();
+        msgInClient.setMsg(msg);
+        EchoCloud.MsgInClient echoMsg = restTemplate.postForObject("http://echorestservice/echo", msgInClient, EchoCloud.MsgInClient.class);
+        logger.info("echoTemplateCloud将要返回："+echoMsg.getMsg());
+        return echoMsg;
+    }
+
 }
