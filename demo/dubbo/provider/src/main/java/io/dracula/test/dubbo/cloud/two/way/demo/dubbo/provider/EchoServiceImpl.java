@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author dk
  */
-@org.apache.dubbo.config.annotation.Service
+@org.apache.dubbo.config.annotation.Service(protocol = "dubbo")
 public class EchoServiceImpl implements EchoService {
 
     private static Logger logger = LoggerFactory.getLogger(EchoServiceImpl.class);

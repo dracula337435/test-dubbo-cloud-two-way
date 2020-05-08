@@ -1,8 +1,10 @@
 dubbo:
   application:
     name: demo-dubbo-provider
-  protocol:
-    name: dubbo
-    port: -1
+  protocols:
+    dubbo:
+      port: -1
+    rest:
+      port: 18080
   registry:
     address: tsfconsul://localhost:8500

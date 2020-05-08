@@ -12,4 +12,25 @@
 
     <artifactId>test-dubbo-cloud-two-way-demo-dubbo-api</artifactId>
 
+    <dependencies>
+        <!-- 使用dubbo-rest，api带着ws即可 -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.6.1.Final</version>
+        </dependency>
+        <!-- 使用dubbo-rest，provider和rest都会用到jackson-provider和jetty-all -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.6.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
+            <artifactId>jetty-all</artifactId>
+            <version>9.4.28.v20200408</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
 </project>
