@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author dk
  */
 @FeignClient("test-cloud-server")
-public interface Echo {
+public interface EchoCloud {
 
     @PostMapping("/echo")
     MsgInClient echo(MsgInClient msgInClient);

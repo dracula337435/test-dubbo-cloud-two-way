@@ -37,3 +37,6 @@ Caused by: java.lang.ClassNotFoundException: org.apache.geronimo.components.jasp
 ```
 但是，如果多指定一下```consumer```也依赖```jetty-all```，就不会有这个异常了  
 依赖链条为，```consumer```依赖```jetty-all```，```consumer```依赖```api```依赖```jetty-all```
+
+```cloud```调用```dubbo```方向：  
+```dubbo```向```consul```注册的规则是```serviceid```为接口短名，于是```cloud```中```feign```或```RestTmplate```，```host```段写这个短名即可

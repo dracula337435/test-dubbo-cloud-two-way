@@ -17,13 +17,13 @@ public class ClientController {
     private static Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     @Autowired
-    private Echo echo;
+    private EchoCloud echoCloud;
 
     @GetMapping("echoFeignCloud")
-    public Echo.MsgInClient echoFeignCloud(@RequestParam(name="msg", defaultValue="hello") String msg){
-        Echo.MsgInClient msgInClient = new Echo.MsgInClient();
+    public EchoCloud.MsgInClient echoFeignCloud(@RequestParam(name="msg", defaultValue="hello") String msg){
+        EchoCloud.MsgInClient msgInClient = new EchoCloud.MsgInClient();
         msgInClient.setMsg(msg);
-        Echo.MsgInClient echoMsg = echo.echo(msgInClient);
+        EchoCloud.MsgInClient echoMsg = echoCloud.echo(msgInClient);
         logger.info("echoFeignCloud将要返回："+echoMsg.getMsg());
         return echoMsg;
     }
@@ -32,10 +32,10 @@ public class ClientController {
     private RestTemplate restTemplate;
 
     @GetMapping("echoTemplateCloud")
-    public Echo.MsgInClient echoTemplateCloud(@RequestParam(name="msg", defaultValue="hello") String msg){
-        Echo.MsgInClient msgInClient = new Echo.MsgInClient();
+    public EchoCloud.MsgInClient echoTemplateCloud(@RequestParam(name="msg", defaultValue="hello") String msg){
+        EchoCloud.MsgInClient msgInClient = new EchoCloud.MsgInClient();
         msgInClient.setMsg(msg);
-        Echo.MsgInClient echoMsg = restTemplate.postForObject("http://test-cloud-server/echo", msgInClient, Echo.MsgInClient.class);
+        EchoCloud.MsgInClient echoMsg = restTemplate.postForObject("http://test-cloud-server/echo", msgInClient, EchoCloud.MsgInClient.class);
         logger.info("echoTemplateCloud将要返回："+echoMsg.getMsg());
         return echoMsg;
     }
