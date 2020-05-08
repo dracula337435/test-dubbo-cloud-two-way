@@ -12,4 +12,11 @@
 
     <artifactId>test-dubbo-cloud-two-way-demo-cloud-client</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.tencent.tsf</groupId>
+            <artifactId>spring-cloud-tsf-starter</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
