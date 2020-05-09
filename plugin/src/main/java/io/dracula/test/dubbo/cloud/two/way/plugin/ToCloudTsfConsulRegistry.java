@@ -249,15 +249,9 @@ public class ToCloudTsfConsulRegistry extends FailbackRegistry {
         if (StringUtils.isEmpty(TSF_ACL_TOKEN)) {
             return services.stream()
                     .map(s -> {
-                        Map<String, String> metas = s.getService().getMeta();
-                        int size = Integer.valueOf(metas.get(DUBBO_URL_KEY_SPLITS_SIZE));
-                        String fullUrl = "";
-                        for (int i = 0; i < size; i++) {
-                            fullUrl += metas.get(DUBBO_URL_KEY + i);
-                        }
-                        return fullUrl;
+                        HealthService.Service service = s.getService();
+                        return new URL("rest", service.getAddress(), service.getPort(), "", "interface", "*");
                     })
-                    .map(URL::valueOf)
                     .collect(Collectors.toList());
         } else {
             return services.stream()
@@ -310,6 +304,19 @@ public class ToCloudTsfConsulRegistry extends FailbackRegistry {
     }
 
     private String toServiceName(URL url) {
+        String serviceInterface = url.getServiceInterface();
+        try {
+            Class<?> clazz = Class.forName(serviceInterface);
+            ToCloudTsfConsulServiceName toCloudTsfConsulServiceName = clazz.getAnnotation(ToCloudTsfConsulServiceName.class);
+            if(toCloudTsfConsulServiceName != null){
+                String serviceNameInPriority = toCloudTsfConsulServiceName.value();
+                if(!StringUtils.isEmpty(serviceNameInPriority)){
+                    return serviceNameInPriority;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            //故意留空，因为无需处理
+        }
         return toServiceName(toCategoryPath(url));
     }
 
