@@ -12,4 +12,12 @@
 
     <artifactId>test-dubbo-cloud-two-way-plugin</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.tencent.tsf</groupId>
+            <artifactId>tsf-dubbo</artifactId>
+            <version>1.1.6-apache-RELEASE</version>
+        </dependency>
+    </dependencies>
+
 </project>
