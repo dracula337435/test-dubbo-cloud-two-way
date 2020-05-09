@@ -1,5 +1,11 @@
 dubbo:
   application:
     name: demo-dubbo-consumer
-  registry:
-    address: tsfconsul://localhost:8500
+  registries:
+    todubbo:
+      address: tsfconsul://localhost:8500
+    tocloud:
+      address: tocloudtsfconsul://localhost:8500
+      default: false
+server:
+  port: 18081

@@ -41,4 +41,16 @@ public class EchoController {
         return someMsg;
     }
 
+    @org.apache.dubbo.config.annotation.Reference(registry = "tocloud")
+    private TestToCloudEchoService testToCloudEchoService;
+
+    @GetMapping("/echoCloud")
+    public SomeMsg echoCloud(@RequestParam(name="msg", defaultValue="hello") String msg){
+        SomeMsg someMsg = new SomeMsg();
+        someMsg.setMsg(msg);
+        someMsg = testToCloudEchoService.echo(someMsg);
+        logger.info("将要返回："+someMsg.getMsg());
+        return someMsg;
+    }
+
 }
