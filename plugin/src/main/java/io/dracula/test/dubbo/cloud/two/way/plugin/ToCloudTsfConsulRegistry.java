@@ -27,6 +27,9 @@ import static java.util.concurrent.Executors.newCachedThreadPool;
 import static org.apache.dubbo.common.Constants.ANY_VALUE;
 
 /**
+ * 照抄了com.tencent.tsf:tsf-dubbo:1.1.6-apache-RELEASE中的{@link com.tencent.tsf.registry.consul.ConsulRegistry}<br>
+ * 修改了其中的private函数
+ *
  * @author dk
  */
 public class ToCloudTsfConsulRegistry extends FailbackRegistry {
