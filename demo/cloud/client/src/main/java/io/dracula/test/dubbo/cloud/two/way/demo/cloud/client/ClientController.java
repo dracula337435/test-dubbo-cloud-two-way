@@ -57,7 +57,7 @@ public class ClientController {
         EchoCloud.MsgInClient msgInClient = new EchoCloud.MsgInClient();
         msgInClient.setMsg(msg);
         EchoCloud.MsgInClient echoMsg = restTemplate.postForObject("http://echorestservice/echo", msgInClient, EchoCloud.MsgInClient.class);
-        logger.info("echoTemplateCloud将要返回："+echoMsg.getMsg());
+        logger.info("echoTemplateDubbo将要返回："+echoMsg.getMsg());
         return echoMsg;
     }
 
