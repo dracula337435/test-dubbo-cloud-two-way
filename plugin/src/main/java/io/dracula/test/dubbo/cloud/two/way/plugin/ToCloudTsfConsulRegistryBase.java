@@ -245,20 +245,11 @@ public class ToCloudTsfConsulRegistryBase extends FailbackRegistry {
     }
 
     private List<URL> convert(List<HealthService> services) {
-        // 本地模式，拼接 URL
-        if (StringUtils.isEmpty(TSF_ACL_TOKEN)) {
-            return services.stream()
-                    .map(s -> {
-                        HealthService.Service service = s.getService();
-                        return new URL("rest", service.getAddress(), service.getPort(), "");
-                    })
-                    .collect(Collectors.toList());
-        } else {
-            return services.stream()
-                    .map(s -> s.getService().getMeta().get(DUBBO_URL_KEY))
-                    .map(URL::valueOf)
-                    .collect(Collectors.toList());
-        }
+        return services.stream()
+                .map(HealthService::getService)
+                .filter(s -> s!=null && !"consul".equals(s.getService()))
+                .map(s -> new URL("rest", s.getAddress(), s.getPort(), ""))
+                .collect(Collectors.toList());
     }
 
     private NewService buildService(URL url) {
